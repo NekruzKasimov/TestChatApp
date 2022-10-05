@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  TestChatApp
+
+  Created by Niko on 04.10.22.
+  
+*/
+
+"dependancies.mainWindow.Title" = "mainWindow";
+"mainPage.cellIdentifier" = "MainCell";
+"tabbar.addButton.title" = "Add";
+"tabbar.mainViewController.title" = "Main";
+"tabbar.settingsViewController.title" = "Settings";
+"contactsList.errorMessage" = "Error fetching containers";
+
