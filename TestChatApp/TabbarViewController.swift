@@ -52,8 +52,8 @@ final class TabbarViewController: ITabbarViewController {
     func setControllers() {
         let mainScreen = Resolver.resolve(IMainPageViewController.self)
         let profileScreen = Resolver.resolve(ISettingsViewContoller.self)
-        let icon1 = UITabBarItem(title: R.string.localizable.tabbarMainViewControllerTitle(), image: UIImage(named: ""), selectedImage: UIImage(named: ""))
-        let icon2 = UITabBarItem(title: R.string.localizable.tabbarSettingsViewControllerTitle(), image: UIImage(named: ""), selectedImage: UIImage(named: ""))
+        let icon1 = UITabBarItem(title: R.string.localizable.tabbarMainViewControllerTitle(), image: R.image.home(), selectedImage: R.image.home())
+        let icon2 = UITabBarItem(title: R.string.localizable.tabbarSettingsViewControllerTitle(), image: R.image.settings(), selectedImage: R.image.settings())
         mainScreen.tabBarItem = icon1
         profileScreen.tabBarItem = icon2
         let controllers: [BaseViewController] = [mainScreen, profileScreen]

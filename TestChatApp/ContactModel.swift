@@ -10,14 +10,12 @@ import UIKit
 
 struct ContactModel {
     var name: String
-    var iconUrl: String?
+    var iconData: Data?
     
     func getIcon() -> UIImage? {
-        guard let iconUrl = iconUrl else {
+        guard let iconData = iconData else {
             return R.image.profileIcon()
         }
-        let url = URL(string: iconUrl)
-        let data = try? Data(contentsOf: url!)
-        return UIImage(data: data!)
+        return UIImage(data: iconData)
     }
 }

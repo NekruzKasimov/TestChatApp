@@ -24,7 +24,7 @@ struct ContactsListViewModel: IContactsListViewModel {
                 PhoneContacts.getContacts().map { contacts in
                     var contactsModel: [ContactModel] = []
                     for item in contacts {
-                        contactsModel.append(ContactModel(name: item.givenName))
+                        contactsModel.append(ContactModel(name: item.givenName, iconData: item.thumbnailImageData))
                     }
                     return contactsModel
                 }

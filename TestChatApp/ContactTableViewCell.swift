@@ -27,6 +27,9 @@ final class ContactTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
         titleLabel.textColor = .black
         
+        contactImageView.layer.cornerRadius = 15
+        contactImageView.layer.masksToBounds = true
+        
         let stackView = UIStackView()
         stackView.addArrangedSubview(contactImageView)
         stackView.addArrangedSubview(titleLabel)
