@@ -38,6 +38,12 @@
 		23F91EF828ED66B5008C9A40 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EF728ED66B5008C9A40 /* ContactTableViewCell.swift */; };
 		23F91EFB28ED7A8C008C9A40 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EFA28ED7A8C008C9A40 /* UIViewController+Extension.swift */; };
 		23F91EFD28ED7EDC008C9A40 /* RxSwift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EFC28ED7EDC008C9A40 /* RxSwift+Extension.swift */; };
+		23FB51F128EDAE5E00956656 /* LoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51F028EDAE5E00956656 /* LoggerPlugin.swift */; };
+		23FB51F328EDAEA700956656 /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51F228EDAEA700956656 /* RequestProvider.swift */; };
+		23FB51F728EDAF0700956656 /* MoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51F628EDAF0700956656 /* MoyaProvider.swift */; };
+		23FB51FA28EDB00400956656 /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51F928EDB00400956656 /* ChatUseCase.swift */; };
+		23FB520028EDE4FE00956656 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51FF28EDE4FE00956656 /* MessageModel.swift */; };
+		23FB520328EDE6CC00956656 /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB520228EDE6CC00956656 /* PhoneContacts.swift */; };
 		31859C5A0516B143EE450C26 /* Pods_TestChatApp_TestChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C48DB02EA7E572DEE62D2 /* Pods_TestChatApp_TestChatAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +98,12 @@
 		23F91EF728ED66B5008C9A40 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		23F91EFA28ED7A8C008C9A40 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		23F91EFC28ED7EDC008C9A40 /* RxSwift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extension.swift"; sourceTree = "<group>"; };
+		23FB51F028EDAE5E00956656 /* LoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerPlugin.swift; sourceTree = "<group>"; };
+		23FB51F228EDAEA700956656 /* RequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
+		23FB51F628EDAF0700956656 /* MoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProvider.swift; sourceTree = "<group>"; };
+		23FB51F928EDB00400956656 /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
+		23FB51FF28EDE4FE00956656 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		23FB520228EDE6CC00956656 /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		2CCB8CEB6666B5A1B5776807 /* Pods-TestChatApp-TestChatAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestChatApp-TestChatAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestChatApp-TestChatAppUITests/Pods-TestChatApp-TestChatAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F96E2BF248FF85377038BE2 /* Pods-TestChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestChatApp.debug.xcconfig"; path = "Target Support Files/Pods-TestChatApp/Pods-TestChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5431611E3BF42DBF6907099E /* Pods_TestChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +182,7 @@
 				2333AC4328EB413C00E03022 /* AppDelegate.swift */,
 				239D68C128EB46590010F9E3 /* AppNavigator.swift */,
 				239D68C428EB46A10010F9E3 /* DI */,
+				23FB51EF28EDAE4A00956656 /* Network */,
 				23F91ED828EC66A6008C9A40 /* Common */,
 				234C3D3A28EC2EB7007277C4 /* Models */,
 				239D68C728EB470E0010F9E3 /* Screens */,
@@ -203,6 +216,7 @@
 			children = (
 				234C3D3B28EC2F08007277C4 /* ChatModel.swift */,
 				23F91EF428ED6381008C9A40 /* ContactModel.swift */,
+				23FB51FF28EDE4FE00956656 /* MessageModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -251,6 +265,7 @@
 				23F91EF928ED7A74008C9A40 /* Extensions */,
 				23F91EEA28EC68BA008C9A40 /* Strings */,
 				23F91ED928EC66AC008C9A40 /* Base */,
+				23FB520228EDE6CC00956656 /* PhoneContacts.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -316,6 +331,25 @@
 				23F91EFC28ED7EDC008C9A40 /* RxSwift+Extension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		23FB51EF28EDAE4A00956656 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				23FB51F828EDAFF100956656 /* UseCases */,
+				23FB51F028EDAE5E00956656 /* LoggerPlugin.swift */,
+				23FB51F228EDAEA700956656 /* RequestProvider.swift */,
+				23FB51F628EDAF0700956656 /* MoyaProvider.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		23FB51F828EDAFF100956656 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				23FB51F928EDB00400956656 /* ChatUseCase.swift */,
+			);
+			name = UseCases;
 			sourceTree = "<group>";
 		};
 		9D860EF2EEFD9AF90A8C0B8D /* Pods */ = {
@@ -596,20 +630,26 @@
 				23F91EE428EC6791008C9A40 /* TabbarViewModel.swift in Sources */,
 				23F91EDB28EC66B7008C9A40 /* BaseViewController.swift in Sources */,
 				23F91EE328EC6791008C9A40 /* TabbarViewController.swift in Sources */,
+				23FB520328EDE6CC00956656 /* PhoneContacts.swift in Sources */,
 				23F91EE728EC6807008C9A40 /* SettingsViewContoller.swift in Sources */,
 				23F91EEF28EC6A9A008C9A40 /* ContactsListViewController.swift in Sources */,
 				239D68D228EB4AF10010F9E3 /* MainTableViewCell.swift in Sources */,
 				239D68C628EB46BF0010F9E3 /* Dependancies.swift in Sources */,
+				23FB51F328EDAEA700956656 /* RequestProvider.swift in Sources */,
 				239D68C228EB46590010F9E3 /* AppNavigator.swift in Sources */,
 				23F91EFD28ED7EDC008C9A40 /* RxSwift+Extension.swift in Sources */,
 				2333AC4E28EB413C00E03022 /* TestChatApp.xcdatamodeld in Sources */,
 				23F91EFB28ED7A8C008C9A40 /* UIViewController+Extension.swift in Sources */,
 				2333AC4428EB413C00E03022 /* AppDelegate.swift in Sources */,
+				23FB51F728EDAF0700956656 /* MoyaProvider.swift in Sources */,
+				23FB51FA28EDB00400956656 /* ChatUseCase.swift in Sources */,
 				23F91ED728EC3283008C9A40 /* R.generated.swift in Sources */,
 				23F91EF128EC6AEC008C9A40 /* ContactsListViewModel.swift in Sources */,
 				239D68CF28EB48760010F9E3 /* MainPageNavigator.swift in Sources */,
 				234C3D3C28EC2F08007277C4 /* ChatModel.swift in Sources */,
 				23F91EE228EC6791008C9A40 /* TabbarNavigator.swift in Sources */,
+				23FB520028EDE4FE00956656 /* MessageModel.swift in Sources */,
+				23FB51F128EDAE5E00956656 /* LoggerPlugin.swift in Sources */,
 				23F91EF828ED66B5008C9A40 /* ContactTableViewCell.swift in Sources */,
 				23F91EF528ED6381008C9A40 /* ContactModel.swift in Sources */,
 				23F91EE928EC6810008C9A40 /* SettingsViewModel.swift in Sources */,

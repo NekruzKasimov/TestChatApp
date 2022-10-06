@@ -30,7 +30,7 @@ final class ContactsListViewController: IContactsListViewController {
     
     func setupView() {
         tableView.backgroundColor = .white
-        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: R.string.localizable.mainPageCellIdentifier())
+        tableView.register(ContactTableViewCell.self, forCellReuseIdentifier: R.string.localizable.contactsListCellIdentifier())
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -61,7 +61,7 @@ extension ContactsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.string.localizable.mainPageCellIdentifier(), for: indexPath) as! ContactTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.string.localizable.contactsListCellIdentifier(), for: indexPath) as! ContactTableViewCell
         cell.fill(contact: contacts[indexPath.row])
         return cell
     }

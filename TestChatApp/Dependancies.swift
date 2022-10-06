@@ -8,9 +8,14 @@
 import Foundation
 import Resolver
 
+struct Config {
+    static let baseUrl = URL(string: "https://giddymotion.backendless.app")!
+}
 
 extension Resolver.Name {
     static let mainWindow = Self(R.string.localizable.dependanciesMainWindowTitle())
+    
+    static let baseUrl = Self("baseUrl")
 }
 
 extension Resolver: ResolverRegistering {
@@ -24,10 +29,13 @@ extension Resolver: ResolverRegistering {
         
         register { AppNavigator(window: $0.resolve(name: .mainWindow)) }
         
+        register(name: .baseUrl) { Config.baseUrl }
+        
         registerTabbarPage()
         registerMainPage()
         registerSettingsPage()
         registerContactsListPage()
+        registerChatUseCase()
     }
     
     private static func registerTabbarPage() {
@@ -38,7 +46,7 @@ extension Resolver: ResolverRegistering {
     
     private static func registerMainPage() {
         register(IMainPageNavigator.self) { MainPageNavigator(viewController: $1.get()) }
-        register(IMainPageViewModel.self) { MainPageViewModel(navigator: $0.resolve(args: $1.get())) }
+        register(IMainPageViewModel.self) { MainPageViewModel(navigator: $0.resolve(args: $1.get()), chatUseCase: $0.resolve()) }
         register(IMainPageViewController.self) { MainPageViewController() }
             .resolveProperties { $1.viewModel = $0.optional(args: $1) }
     }

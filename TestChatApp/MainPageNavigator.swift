@@ -9,8 +9,13 @@ import Foundation
 import Resolver
 
 protocol IMainPageNavigator {
+    func openChatPage(with chat: ChatModel)
 }
 
 struct MainPageNavigator: IMainPageNavigator {
     weak var viewController: IMainPageViewController!
+    
+    func openChatPage(with chat: ChatModel) {
+        
+    }
 }

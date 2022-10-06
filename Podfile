@@ -14,6 +14,7 @@ target 'TestChatApp' do
   pod 'SnapKit'
   pod 'R.swift'
   pod 'Moya/RxSwift'
+  pod 'SDWebImage'
 
 
   target 'TestChatAppTests' do

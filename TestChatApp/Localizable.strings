@@ -8,6 +8,7 @@
 
 "dependancies.mainWindow.Title" = "mainWindow";
 "mainPage.cellIdentifier" = "MainCell";
+"contactsList.cellIdentifier" = "contactsCell";
 "tabbar.addButton.title" = "Add";
 "tabbar.mainViewController.title" = "Main";
 "tabbar.settingsViewController.title" = "Settings";

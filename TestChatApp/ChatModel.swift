@@ -8,17 +8,10 @@
 import Foundation
 import UIKit
 
-struct ChatModel {
-    var name: String
+struct ChatModel: Codable {
+    var chatId: Int
+    var chatName: String
     var lastMessage: String
     var iconUrl: String?
-    
-    func getIcon() -> UIImage? {
-        guard let iconUrl = iconUrl else {
-            return R.image.profileIcon()
-        }
-        let url = URL(string: iconUrl)
-        let data = try? Data(contentsOf: url!)
-        return UIImage(data: data!)
-    }
+    var messages: [MessageModel] = []
 }
