@@ -36,12 +36,27 @@ extension Resolver: ResolverRegistering {
         registerSettingsPage()
         registerContactsListPage()
         registerChatUseCase()
+        registerChatPage()
     }
     
     private static func registerTabbarPage() {
         register(ITabbarNavigator.self) { TabbarNavigator(viewController: $1.get()) }
         register(ITabbarViewModel.self) { TabbarViewModel(navigator: $0.resolve(args: $1.get())) }
         register(ITabbarViewController.self) { TabbarViewController() } .resolveProperties { $1.viewModel = $0.optional(args: $1) }
+    }
+    
+    private static func registerChatPage() {
+        register(IChatNavigator.self) { ChatNavigator(viewController: $1.get()) }
+        register(IChatViewModel.self) { ChatViewModel(
+            navigator: $0.resolve(args: $1.get("vc")),
+            chat: $1.get("chat")) }
+        register(IChatViewController.self) { ChatViewController() }
+            .resolveProperties {
+                let args: [String : Any] = [
+                    "vc" : $1,
+                    "chat" : $2.get("chat") as ChatModel,
+                ]
+                $1.viewModel = $0.optional(args: args) }
     }
     
     private static func registerMainPage() {

@@ -44,6 +44,9 @@
 		23FB51FA28EDB00400956656 /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51F928EDB00400956656 /* ChatUseCase.swift */; };
 		23FB520028EDE4FE00956656 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB51FF28EDE4FE00956656 /* MessageModel.swift */; };
 		23FB520328EDE6CC00956656 /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB520228EDE6CC00956656 /* PhoneContacts.swift */; };
+		23FB520628EEA72C00956656 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB520528EEA72C00956656 /* ChatViewController.swift */; };
+		23FB520828EEA90200956656 /* ChatNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB520728EEA90200956656 /* ChatNavigator.swift */; };
+		23FB520A28EEA90B00956656 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB520928EEA90B00956656 /* ChatViewModel.swift */; };
 		31859C5A0516B143EE450C26 /* Pods_TestChatApp_TestChatAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C48DB02EA7E572DEE62D2 /* Pods_TestChatApp_TestChatAppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,9 @@
 		23FB51F928EDB00400956656 /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		23FB51FF28EDE4FE00956656 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		23FB520228EDE6CC00956656 /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
+		23FB520528EEA72C00956656 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		23FB520728EEA90200956656 /* ChatNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNavigator.swift; sourceTree = "<group>"; };
+		23FB520928EEA90B00956656 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		2CCB8CEB6666B5A1B5776807 /* Pods-TestChatApp-TestChatAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestChatApp-TestChatAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TestChatApp-TestChatAppUITests/Pods-TestChatApp-TestChatAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3F96E2BF248FF85377038BE2 /* Pods-TestChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestChatApp.debug.xcconfig"; path = "Target Support Files/Pods-TestChatApp/Pods-TestChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5431611E3BF42DBF6907099E /* Pods_TestChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,6 +238,7 @@
 		239D68C728EB470E0010F9E3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				23FB520428EEA71A00956656 /* ChatPage */,
 				23F91EED28EC6A86008C9A40 /* ContactsList */,
 				23F91EDE28EC6789008C9A40 /* TabBar */,
 				239D68C828EB47150010F9E3 /* MainPage */,
@@ -352,6 +359,16 @@
 			name = UseCases;
 			sourceTree = "<group>";
 		};
+		23FB520428EEA71A00956656 /* ChatPage */ = {
+			isa = PBXGroup;
+			children = (
+				23FB520528EEA72C00956656 /* ChatViewController.swift */,
+				23FB520928EEA90B00956656 /* ChatViewModel.swift */,
+				23FB520728EEA90200956656 /* ChatNavigator.swift */,
+			);
+			name = ChatPage;
+			sourceTree = "<group>";
+		};
 		9D860EF2EEFD9AF90A8C0B8D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +401,8 @@
 			dependencies = (
 			);
 			name = TestChatApp;
+			packageProductDependencies = (
+			);
 			productName = TestChatApp;
 			productReference = 2333AC4028EB413C00E03022 /* TestChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -459,6 +478,8 @@
 				Base,
 			);
 			mainGroup = 2333AC3728EB413C00E03022;
+			packageReferences = (
+			);
 			productRefGroup = 2333AC4128EB413C00E03022 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -627,6 +648,7 @@
 				23F91EF328EC7C3F008C9A40 /* ContactsListNavigator.swift in Sources */,
 				239D68CC28EB48450010F9E3 /* MainPageViewModel.swift in Sources */,
 				239D68CA28EB47240010F9E3 /* MainPageViewController.swift in Sources */,
+				23FB520828EEA90200956656 /* ChatNavigator.swift in Sources */,
 				23F91EE428EC6791008C9A40 /* TabbarViewModel.swift in Sources */,
 				23F91EDB28EC66B7008C9A40 /* BaseViewController.swift in Sources */,
 				23F91EE328EC6791008C9A40 /* TabbarViewController.swift in Sources */,
@@ -649,9 +671,11 @@
 				234C3D3C28EC2F08007277C4 /* ChatModel.swift in Sources */,
 				23F91EE228EC6791008C9A40 /* TabbarNavigator.swift in Sources */,
 				23FB520028EDE4FE00956656 /* MessageModel.swift in Sources */,
+				23FB520A28EEA90B00956656 /* ChatViewModel.swift in Sources */,
 				23FB51F128EDAE5E00956656 /* LoggerPlugin.swift in Sources */,
 				23F91EF828ED66B5008C9A40 /* ContactTableViewCell.swift in Sources */,
 				23F91EF528ED6381008C9A40 /* ContactModel.swift in Sources */,
+				23FB520628EEA72C00956656 /* ChatViewController.swift in Sources */,
 				23F91EE928EC6810008C9A40 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

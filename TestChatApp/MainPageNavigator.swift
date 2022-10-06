@@ -16,6 +16,7 @@ struct MainPageNavigator: IMainPageNavigator {
     weak var viewController: IMainPageViewController!
     
     func openChatPage(with chat: ChatModel) {
-        
+        let vc = Resolver.resolve(IChatViewController.self, args: ["chat": chat])
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }
