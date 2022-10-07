@@ -22,9 +22,20 @@ struct MainPageViewModel: IMainPageViewModel {
         let models = input
             .viewWillAppear
             .flatMapLatest {
-                chatUseCase.chats().asSignal(onErrorJustReturn: [])
+                chatUseCase.chats().map { $0 }.asSignal(onErrorJustReturn: [])
             }
-        let result = models
+        
+        let dataStorageChats = BehaviorRelay(value: DataManager.sharedInstance.retreiveChats() ?? []).asSignal(onErrorJustReturn: [])
+  
+        let result = Signal<[ChatModel]>.combineLatest(models, dataStorageChats, resultSelector: { serverChats, dbChats in
+            if serverChats.isEmpty {
+                return dbChats
+            }
+            return serverChats
+        })
+            .do(onNext: { chats in
+                DataManager.sharedInstance.saveChats(chats)
+            })
             .also { objects in
                 input.itemSelected.flatMapLatest { indexPath -> Signal<Void> in
                     navigator.openChatPage(with: objects[indexPath.item])

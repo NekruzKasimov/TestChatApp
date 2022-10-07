@@ -10,12 +10,13 @@
 		071D6A5F438C875DB02A70CE /* Pods_TestChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5431611E3BF42DBF6907099E /* Pods_TestChatApp.framework */; };
 		13B2B61A9FC6E6F451F5E032 /* Pods_TestChatAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC144E451A75D3A4E0430635 /* Pods_TestChatAppTests.framework */; };
 		2333AC4428EB413C00E03022 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333AC4328EB413C00E03022 /* AppDelegate.swift */; };
-		2333AC4E28EB413C00E03022 /* TestChatApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2333AC4C28EB413C00E03022 /* TestChatApp.xcdatamodeld */; };
 		2333AC5028EB413D00E03022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2333AC4F28EB413D00E03022 /* Assets.xcassets */; };
 		2333AC5328EB413D00E03022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2333AC5128EB413D00E03022 /* LaunchScreen.storyboard */; };
 		2333AC5E28EB413D00E03022 /* TestChatAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333AC5D28EB413D00E03022 /* TestChatAppTests.swift */; };
 		2333AC6828EB413D00E03022 /* TestChatAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333AC6728EB413D00E03022 /* TestChatAppUITests.swift */; };
 		2333AC6A28EB413D00E03022 /* TestChatAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2333AC6928EB413D00E03022 /* TestChatAppUITestsLaunchTests.swift */; };
+		2349C71C28EF3E1B00530B16 /* Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2349C71A28EF3E1B00530B16 /* Chat.xcdatamodeld */; };
+		2349C71F28EF414200530B16 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2349C71E28EF414200530B16 /* DataManager.swift */; };
 		234C3D3C28EC2F08007277C4 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234C3D3B28EC2F08007277C4 /* ChatModel.swift */; };
 		239D68C228EB46590010F9E3 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D68C128EB46590010F9E3 /* AppNavigator.swift */; };
 		239D68C628EB46BF0010F9E3 /* Dependancies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D68C528EB46BF0010F9E3 /* Dependancies.swift */; };
@@ -70,7 +71,6 @@
 /* Begin PBXFileReference section */
 		2333AC4028EB413C00E03022 /* TestChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2333AC4328EB413C00E03022 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2333AC4D28EB413C00E03022 /* TestChatApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestChatApp.xcdatamodel; sourceTree = "<group>"; };
 		2333AC4F28EB413D00E03022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2333AC5228EB413D00E03022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2333AC5428EB413D00E03022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +79,8 @@
 		2333AC6328EB413D00E03022 /* TestChatAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestChatAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2333AC6728EB413D00E03022 /* TestChatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChatAppUITests.swift; sourceTree = "<group>"; };
 		2333AC6928EB413D00E03022 /* TestChatAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChatAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2349C71B28EF3E1B00530B16 /* Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat.xcdatamodel; sourceTree = "<group>"; };
+		2349C71E28EF414200530B16 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		234C3D3B28EC2F08007277C4 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		239D68C128EB46590010F9E3 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		239D68C528EB46BF0010F9E3 /* Dependancies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependancies.swift; sourceTree = "<group>"; };
@@ -192,10 +194,10 @@
 				23F91ED828EC66A6008C9A40 /* Common */,
 				234C3D3A28EC2EB7007277C4 /* Models */,
 				239D68C728EB470E0010F9E3 /* Screens */,
+				2349C71D28EF412E00530B16 /* CoreData */,
 				2333AC4F28EB413D00E03022 /* Assets.xcassets */,
 				2333AC5128EB413D00E03022 /* LaunchScreen.storyboard */,
 				2333AC5428EB413D00E03022 /* Info.plist */,
-				2333AC4C28EB413C00E03022 /* TestChatApp.xcdatamodeld */,
 			);
 			path = TestChatApp;
 			sourceTree = "<group>";
@@ -217,12 +219,21 @@
 			path = TestChatAppUITests;
 			sourceTree = "<group>";
 		};
+		2349C71D28EF412E00530B16 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2349C71A28EF3E1B00530B16 /* Chat.xcdatamodeld */,
+				2349C71E28EF414200530B16 /* DataManager.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		234C3D3A28EC2EB7007277C4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				234C3D3B28EC2F08007277C4 /* ChatModel.swift */,
-				23F91EF428ED6381008C9A40 /* ContactModel.swift */,
 				23FB51FF28EDE4FE00956656 /* MessageModel.swift */,
+				23F91EF428ED6381008C9A40 /* ContactModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -645,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2349C71C28EF3E1B00530B16 /* Chat.xcdatamodeld in Sources */,
 				23F91EF328EC7C3F008C9A40 /* ContactsListNavigator.swift in Sources */,
 				239D68CC28EB48450010F9E3 /* MainPageViewModel.swift in Sources */,
 				239D68CA28EB47240010F9E3 /* MainPageViewController.swift in Sources */,
@@ -660,10 +672,10 @@
 				23FB51F328EDAEA700956656 /* RequestProvider.swift in Sources */,
 				239D68C228EB46590010F9E3 /* AppNavigator.swift in Sources */,
 				23F91EFD28ED7EDC008C9A40 /* RxSwift+Extension.swift in Sources */,
-				2333AC4E28EB413C00E03022 /* TestChatApp.xcdatamodeld in Sources */,
 				23F91EFB28ED7A8C008C9A40 /* UIViewController+Extension.swift in Sources */,
 				2333AC4428EB413C00E03022 /* AppDelegate.swift in Sources */,
 				23FB51F728EDAF0700956656 /* MoyaProvider.swift in Sources */,
+				2349C71F28EF414200530B16 /* DataManager.swift in Sources */,
 				23FB51FA28EDB00400956656 /* ChatUseCase.swift in Sources */,
 				23F91ED728EC3283008C9A40 /* R.generated.swift in Sources */,
 				23F91EF128EC6AEC008C9A40 /* ContactsListViewModel.swift in Sources */,
@@ -1018,13 +1030,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2333AC4C28EB413C00E03022 /* TestChatApp.xcdatamodeld */ = {
+		2349C71A28EF3E1B00530B16 /* Chat.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2333AC4D28EB413C00E03022 /* TestChatApp.xcdatamodel */,
+				2349C71B28EF3E1B00530B16 /* Chat.xcdatamodel */,
 			);
-			currentVersion = 2333AC4D28EB413C00E03022 /* TestChatApp.xcdatamodel */;
-			path = TestChatApp.xcdatamodeld;
+			currentVersion = 2349C71B28EF3E1B00530B16 /* Chat.xcdatamodel */;
+			path = Chat.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -16,8 +16,7 @@ target 'TestChatApp' do
   pod 'Moya/RxSwift'
   pod 'SDWebImage'
   pod 'MessageKit'
-
-
+  
   target 'TestChatAppTests' do
     inherit! :search_paths
     # Pods for testing
