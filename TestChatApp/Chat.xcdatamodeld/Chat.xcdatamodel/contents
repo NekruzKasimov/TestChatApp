@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ChatEntity" representedClassName="ChatEntity" syncable="YES">
+    <entity name="ChatCD" representedClassName="ChatCD" syncable="YES">
         <attribute name="chatId" optional="YES" attributeType="String"/>
         <attribute name="chatName" optional="YES" attributeType="String"/>
         <attribute name="iconUrl" optional="YES" attributeType="String"/>
         <attribute name="lastMessage" optional="YES" attributeType="String"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MessageEntity" inverseName="chat" inverseEntity="MessageEntity"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MessageCD" inverseName="chat" inverseEntity="MessageCD"/>
     </entity>
-    <entity name="MessageEntity" representedClassName="MessageEntity" parentEntity="ChatEntity" syncable="YES">
+    <entity name="MessageCD" representedClassName="MessageCD" parentEntity="ChatCD" syncable="YES">
         <attribute name="displayName" optional="YES" attributeType="String"/>
         <attribute name="messageId" optional="YES" attributeType="String"/>
         <attribute name="messageText" optional="YES" attributeType="String"/>
         <attribute name="senderId" optional="YES" attributeType="String"/>
-        <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="messages" inverseEntity="ChatEntity"/>
+        <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatCD" inverseName="messages" inverseEntity="ChatCD"/>
     </entity>
 </model>

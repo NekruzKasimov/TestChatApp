@@ -22,20 +22,21 @@ open class DataManager: NSObject {
 
     func retreiveChats() -> [ChatModel]? {
         guard let managedContext = getContainer()?.viewContext else { return nil }
-
+        let fetchEntity = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatCD")
+        
         do {
-            let chatEntities = try managedContext.fetch(ChatEntity.fetchRequest()) as! [ChatEntity]
-            var result = [ChatModel]()
-
-            for item in chatEntities {
-                result.append(item.toChatModel())
-            }
+            let entities = try managedContext.fetch(fetchEntity)
             
-            return result
+            var result = [ChatModel]()
+            for item in entities {
+                if let item = item as? ChatCD {
+                    result.append(item.toChatModel())
+                }
+            }
         } catch let error as NSError {
             print("Retrieving user failed. \(error): \(error.userInfo)")
-            return nil
         }
+        return nil
     }
 
     func saveChats(_ chats: [ChatModel]) {
@@ -43,25 +44,26 @@ open class DataManager: NSObject {
 
         clearDatabase()
 
-        chats.forEach { chat in
-            let chatEntity = ChatEntity(context: managedContext)
-            chatEntity.lastMessage = chat.lastMessage
-            chatEntity.chatId = chat.chatId
-            chatEntity.iconUrl = chat.iconUrl
-            chatEntity.chatName = chat.chatName
-
-
-            for (index, message) in chat.messages.enumerated() {
-                let messageEntity = MessageEntity(context: managedContext)
-                messageEntity.displayName = message.displayName
-                messageEntity.senderId = message.senderId
-                messageEntity.messageText = message.messageText
-                messageEntity.messageId = message.messageId
-                chatEntity.insertIntoMessages(messageEntity, at: index)
+        managedContext.performAndWait {
+            chats.forEach { chat in
+                let chatEntity = ChatCD(context: managedContext)
+                chatEntity.lastMessage = chat.lastMessage
+                chatEntity.chatId = chat.chatId
+                chatEntity.iconUrl = chat.iconUrl
+                chatEntity.chatName = chat.chatName
+                
+                chat.messages.forEach { message in
+                    let messageEntity = MessageCD(context: managedContext)
+                    messageEntity.displayName = message.displayName
+                    messageEntity.senderId = message.senderId
+                    messageEntity.messageText = message.messageText
+                    messageEntity.messageId = message.messageId
+                    messageEntity.chat = chatEntity
+                }
             }
-            
-           
-            
+        }
+        
+        if managedContext.hasChanges {
             try? managedContext.save()
         }
     }
@@ -71,26 +73,9 @@ open class DataManager: NSObject {
         let context = container.viewContext
         let persistenceCoordinator = container.persistentStoreCoordinator
 
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatEntity")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ChatCD")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
-        try? persistenceCoordinator.execute(deleteRequest, with: context)
-    }
-
-    private func saveMessages(managedContext: NSManagedObjectContext, messages: [MessageModel]) {
-        messages.forEach { message in
-            let newMessage = NSEntityDescription.insertNewObject(forEntityName: "MessageEntity", into: managedContext) as! MessageEntity
-            newMessage.setValue(message.messageText, forKey: "messageText")
-            newMessage.setValue(message.messageId, forKey: "messageId")
-            newMessage.setValue(message.senderId, forKey: "senderId")
-            newMessage.setValue(message.displayName, forKey: "displayName")
-        }
-
-        do {
-            print("Saving session...")
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Failed to save session data! \(error): \(error.userInfo)")
-        }
+        _ = try? persistenceCoordinator.execute(deleteRequest, with: context)
     }
 }

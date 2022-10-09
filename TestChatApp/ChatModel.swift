@@ -16,24 +16,19 @@ struct ChatModel: Codable {
     var iconUrl: String?
     var messages: [MessageModel] = []
     
-    func toChatEntity() -> ChatEntity {
-        var messageEntity = [MessageEntity]()
+    func toChatEntity() -> ChatCD {
+        var messageEntity = [MessageCD]()
         messages.forEach { messageEntity.append($0.toMessageEntity()) }
         
-        return ChatEntity(chatId: chatId, chatName: chatName, lastMessage: lastMessage, iconUrl: iconUrl, messages: messageEntity)
+        return ChatCD(chatId: chatId, chatName: chatName, lastMessage: lastMessage, iconUrl: iconUrl, messages: messageEntity)
     }
 }
 
 
-@objc(ChatEntity)
-class ChatEntity: NSManagedObject {
-    @NSManaged public var chatId : String
-    @NSManaged public var chatName: String
-    @NSManaged public var lastMessage: String
-    @NSManaged public var iconUrl: String?
-    @NSManaged public var messages: NSOrderedSet
+@objc(ChatCD)
+class ChatCD: NSManagedObject {
 
-    init(chatId: String, chatName: String, lastMessage: String, iconUrl: String?, messages: [MessageEntity]) {
+    init(chatId: String, chatName: String, lastMessage: String, iconUrl: String?, messages: [MessageCD]) {
         self.init()
         self.chatId = chatId
         self.chatName = chatName
@@ -51,44 +46,50 @@ class ChatEntity: NSManagedObject {
 
     func toChatModel() -> ChatModel {
         var messageModels = [MessageModel]()
-        messages.forEach { messageModels.append(($0 as! MessageEntity).toMessageModel())}
+        messages.forEach { messageModels.append(($0 as! MessageCD).toMessageModel())}
 
         return ChatModel(chatId: chatId, chatName: chatName, lastMessage: lastMessage, messages: messageModels)
     }
 }
 
-extension ChatEntity {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatEntity> {
-        return NSFetchRequest<ChatEntity>(entityName: "ChatEntity")
+extension ChatCD {
+    @NSManaged public var chatId : String
+    @NSManaged public var chatName: String
+    @NSManaged public var lastMessage: String
+    @NSManaged public var iconUrl: String?
+    @NSManaged public var messages: NSOrderedSet
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ChatCD> {
+        return NSFetchRequest<ChatCD>(entityName: "ChatCD")
     }
 }
 
 // MARK: Generated accessors for messages
-extension ChatEntity {
+extension ChatCD {
 
     @objc(insertObject:inMessagesAtIndex:)
-    @NSManaged public func insertIntoMessages(_ value: MessageEntity, at idx: Int)
+    @NSManaged public func insertIntoMessages(_ value: MessageCD, at idx: Int)
 
     @objc(removeObjectFromMessagesAtIndex:)
     @NSManaged public func removeFromMessages(at idx: Int)
 
     @objc(insertMessages:atIndexes:)
-    @NSManaged public func insertIntoMessages(_ values: [MessageEntity], at indexes: NSIndexSet)
+    @NSManaged public func insertIntoMessages(_ values: [MessageCD], at indexes: NSIndexSet)
 
     @objc(removeMessagesAtIndexes:)
     @NSManaged public func removeFromMessages(at indexes: NSIndexSet)
 
     @objc(replaceObjectInMessagesAtIndex:withObject:)
-    @NSManaged public func replaceMessages(at idx: Int, with value: MessageEntity)
+    @NSManaged public func replaceMessages(at idx: Int, with value: MessageCD)
 
     @objc(replaceMessagesAtIndexes:withMessages:)
-    @NSManaged public func replaceMessages(at indexes: NSIndexSet, with values: [MessageEntity])
+    @NSManaged public func replaceMessages(at indexes: NSIndexSet, with values: [MessageCD])
 
     @objc(addMessagesObject:)
-    @NSManaged public func addToMessages(_ value: MessageEntity)
+    @NSManaged public func addToMessages(_ value: MessageCD)
 
     @objc(removeMessagesObject:)
-    @NSManaged public func removeFromMessages(_ value: MessageEntity)
+    @NSManaged public func removeFromMessages(_ value: MessageCD)
 
     @objc(addMessages:)
     @NSManaged public func addToMessages(_ values: NSOrderedSet)

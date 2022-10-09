@@ -19,15 +19,17 @@ struct MainPageViewModel: IMainPageViewModel {
     var chatUseCase: IChatUseCase
     
     func transform(_ input: MainPageViewModel.Input) -> MainPageViewModel.Output {
+        
+        let dataStorageChats = BehaviorRelay(value: DataManager.sharedInstance.retreiveChats() ?? []).asSignal(onErrorJustReturn: [])
+        
         let models = input
             .viewWillAppear
             .flatMapLatest {
                 chatUseCase.chats().map { $0 }.asSignal(onErrorJustReturn: [])
             }
         
-        let dataStorageChats = BehaviorRelay(value: DataManager.sharedInstance.retreiveChats() ?? []).asSignal(onErrorJustReturn: [])
   
-        let result = Signal<[ChatModel]>.combineLatest(models, dataStorageChats, resultSelector: { serverChats, dbChats in
+        let result = Signal<[ChatModel]>.combineLatest(dataStorageChats, models,  resultSelector: { dbChats, serverChats in
             if serverChats.isEmpty {
                 return dbChats
             }

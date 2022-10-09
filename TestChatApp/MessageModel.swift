@@ -20,8 +20,8 @@ struct MessageModel: Codable {
         return Message(sender: sender, messageId: messageId, sentDate: Date.now, text: messageText)
     }
     
-    func toMessageEntity() -> MessageEntity {
-        return MessageEntity(messageId: messageId, messageText: messageText, senderId: senderId, displayName: displayName)
+    func toMessageEntity() -> MessageCD {
+        return MessageCD(messageId: messageId, messageText: messageText, senderId: senderId, displayName: displayName)
     }
 }
 
@@ -44,13 +44,8 @@ struct Sender: SenderType {
     public let displayName: String
 }
 
-@objc(MessageEntity)
-class MessageEntity: NSManagedObject {
-    @NSManaged public var displayName: String?
-    @NSManaged public var messageId: String?
-    @NSManaged public var messageText: String?
-    @NSManaged public var senderId: String?
-    @NSManaged public var chat: ChatEntity?
+@objc(MessageCD)
+class MessageCD: NSManagedObject {
 
     init(messageId: String, messageText: String, senderId: String, displayName: String) {
         self.init()
@@ -69,9 +64,14 @@ class MessageEntity: NSManagedObject {
     }
 }
 
-extension MessageEntity {
+extension MessageCD {
+    @NSManaged public var displayName: String?
+    @NSManaged public var messageId: String?
+    @NSManaged public var messageText: String?
+    @NSManaged public var senderId: String?
+    @NSManaged public var chat: ChatCD?
     
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<MessageEntity> {
-        return NSFetchRequest<MessageEntity>(entityName: "MessageEntity")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<MessageCD> {
+        return NSFetchRequest<MessageCD>(entityName: "MessageCD")
     }
 }
