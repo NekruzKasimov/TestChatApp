@@ -20,7 +20,7 @@ struct ContactsListViewModel: IContactsListViewModel {
         let models = input
             .viewWillAppear
             .flatMapLatest {
-                PhoneContacts.getContacts().map { contacts in
+                PhoneContacts.getContacts().map { contacts -> [ContactModel]  in
                     var contactsModel: [ContactModel] = []
                     for item in contacts {
                         contactsModel.append(ContactModel(name: item.givenName, iconData: item.thumbnailImageData))
